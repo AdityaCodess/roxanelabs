@@ -3,7 +3,7 @@ import ProcessFlow from "@/components/sections/manufacturing/ProcessFlow";
 
 export default function ManufacturingPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-grid-pattern">
       <Navbar />
 
       {/* Simple Page Header */}

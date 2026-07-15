@@ -5,21 +5,27 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { MANUFACTURING_STEPS } from "@/lib/mock-data";
 import { CheckCircle2 } from "lucide-react";
 
+// 1. FIXED IMAGE URLs (No more broken API links)
+// 1. UPDATED IMAGE URLs (Tested & Working)
+const machineImages = [
+  "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80", // 1. Lab Testing (Scientist with flask)
+  "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80", // 2. Granulation (Industrial Machinery)
+  "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=800&q=80", // 3. Compression (Pill Press)
+  "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=800&q=80", // 4. Coating (Colorful Pills)
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", // Packing
+];
+
 export default function ProcessFlow() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // THE FIX IS HERE:
-  // Old: ["start center", "end center"]
-  // New: ["start 50%", "end 90%"]
-  // Translation: "Start drawing when top hits middle. Finish drawing when bottom is still 10% away from visible."
-  // This forces the line to complete even if you can't scroll further down.
+  // 2. SCROLL PHYSICS (Fills line as you scroll down)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 50%", "end 90%"],
   });
 
   const scrollYSmoothed = useSpring(scrollYProgress, {
-    stiffness: 200, // Increased stiffness slightly for snappier feel
+    stiffness: 200,
     damping: 30,
     restDelta: 0.001,
   });
@@ -27,8 +33,9 @@ export default function ProcessFlow() {
   const lineHeight = useTransform(scrollYSmoothed, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="py-24 bg-white overflow-hidden" ref={containerRef}>
+    <section className="py-24 bg-slate-50 overflow-hidden" ref={containerRef}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* HEADER */}
         <div className="text-center mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,20 +55,18 @@ export default function ProcessFlow() {
 
         <div className="relative">
           {/* --- DYNAMIC SPINE --- */}
+          {/* Gray Background Track */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-[4px] h-full bg-slate-200 rounded-full z-0 top-0"></div>
 
-          {/* 1. Gray Background Track */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-[4px] h-full bg-slate-100 rounded-full z-0 top-0"></div>
-
-          {/* 2. Blue Progress Line */}
+          {/* Blue Progress Line */}
           <motion.div
             style={{ height: lineHeight }}
             className="absolute left-1/2 transform -translate-x-1/2 w-[4px] bg-pharma-blue rounded-full z-0 top-0 origin-top"
           >
-            {/* Glowing Head */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-pharma-blue blur-[2px] rounded-full shadow-[0_0_15px_#003366]"></div>
           </motion.div>
 
-          {/* Added extra padding bottom to ensure the line extends past the last circle visually */}
+          {/* STEPS LOOP */}
           <div className="space-y-32 pb-24">
             {MANUFACTURING_STEPS.map((step, index) => (
               <div
@@ -70,22 +75,24 @@ export default function ProcessFlow() {
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* SIDE A: Text Content */}
+                {/* --- TEXT CONTENT SIDE --- */}
                 <div className="flex-1 w-full text-left z-10">
                   <motion.div
                     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, margin: "-10%" }}
                     transition={{ duration: 0.5 }}
-                    className={`p-8 rounded-2xl border border-slate-100 shadow-xl shadow-blue-900/5 bg-white relative overflow-hidden group`}
+                    className={`p-8 rounded-2xl border border-slate-100 shadow-xl shadow-blue-900/5 bg-white relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300`}
                   >
+                    {/* Colored Top Bar */}
                     <div
                       className={`absolute top-0 left-0 w-1 h-full transition-all duration-300 group-hover:w-2 ${step.color
                         .replace("bg-", "bg-")
                         .replace(" text-", " ")}`}
                     ></div>
 
-                    <div className="flex items-center gap-4 mb-4 pl-2">
+                    {/* Icon & Title */}
+                    <div className="flex items-center gap-4 mb-4 pl-3">
                       <div className={`p-3 rounded-lg bg-gray-50 text-3xl`}>
                         {step.icon}
                       </div>
@@ -93,13 +100,15 @@ export default function ProcessFlow() {
                         {step.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 leading-relaxed pl-2">
+
+                    {/* Description Text */}
+                    <p className="text-gray-600 leading-relaxed pl-3 font-medium">
                       {step.desc}
                     </p>
                   </motion.div>
                 </div>
 
-                {/* CENTER: Node Circle */}
+                {/* --- CENTER NODE --- */}
                 <div className="relative flex items-center justify-center w-16 h-16 shrink-0 z-10">
                   <motion.div
                     initial={{ scale: 0 }}
@@ -114,29 +123,32 @@ export default function ProcessFlow() {
                   </motion.div>
                 </div>
 
-                {/* SIDE B: Image Placeholder */}
+                {/* --- IMAGE SIDE --- */}
                 <div className="flex-1 w-full hidden md:block z-10">
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: false, margin: "-10%" }}
                     transition={{ duration: 0.5 }}
-                    className="aspect-video rounded-2xl bg-slate-50 flex items-center justify-center relative overflow-hidden shadow-inner border border-slate-100"
+                    className="aspect-video rounded-2xl shadow-lg border-4 border-white relative overflow-hidden group"
                   >
-                    <div className="text-slate-300">
-                      <svg
-                        className="w-16 h-16 opacity-50"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="1"
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        ></path>
-                      </svg>
+                    {/* The Real Image */}
+                    <img
+                      src={machineImages[index]}
+                      alt={step.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+
+                    {/* Dark Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+
+                    {/* "Zone Active" Badge */}
+                    <div className="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur text-xs font-bold text-slate-900 rounded-full flex items-center gap-2 shadow-sm border border-white/50">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      </span>
+                      Zone {index + 1} Live
                     </div>
                   </motion.div>
                 </div>
@@ -145,12 +157,15 @@ export default function ProcessFlow() {
           </div>
         </div>
 
+        {/* FOOTER BADGE */}
         <div className="mt-12 flex justify-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-blue-50 text-pharma-blue rounded-full border border-blue-100 text-sm font-medium z-10 relative">
-            <CheckCircle2 size={18} />
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white text-pharma-blue rounded-full border border-blue-100 text-sm font-medium z-10 relative shadow-sm">
+            <CheckCircle2 size={18} className="text-green-500" />
             <span>
               Production Batch Tracking ID:{" "}
-              <span className="font-mono font-bold">#ROX-2025-LIVE</span>
+              <span className="font-mono font-bold text-slate-800">
+                #ROX-2025-LIVE
+              </span>
             </span>
           </div>
         </div>

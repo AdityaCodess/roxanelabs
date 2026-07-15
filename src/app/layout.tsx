@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ChatWidget from "@/components/features/RoxyAI/ChatWidget"; // <--- Import this
+import Footer from "@/components/layout/Footer";
+import TopBar from "@/components/layout/TopBar";
 
 export const metadata: Metadata = {
   title: "Roxane Laboratories",
@@ -15,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <TopBar />
         {children}
-        <ChatWidget /> {/* <--- Add this right here */}
+        <ChatWidget />
+        <Footer />
       </body>
     </html>
   );
