@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   AlertCircle,
   ShieldCheck,
-  KeyRound,
   ArrowLeft,
 } from "lucide-react";
 import { requestInquiryOtpAction, verifyInquiryOtpAction } from "./actions";
@@ -29,14 +28,12 @@ export default function ContactPage() {
   const [currentStep, setCurrentStep] = useState<
     "INPUT" | "OTP_CHALLENGE" | "COMPLETED"
   >("INPUT");
-  const [demoOtp, setDemoOtp] = useState<string | null>(null);
   const [savedPayload, setSavedPayload] = useState<string>("");
 
   // Monitor OTP request response
   useEffect(() => {
     if (requestState?.success && requestState.step === "OTP_CHALLENGE") {
       setCurrentStep("OTP_CHALLENGE");
-      if (requestState.demoCode) setDemoOtp(requestState.demoCode);
       if (requestState.verifiedPayload)
         setSavedPayload(requestState.verifiedPayload);
     }
@@ -156,7 +153,6 @@ export default function ContactPage() {
                 <button
                   onClick={() => {
                     setCurrentStep("INPUT");
-                    setDemoOtp(null);
                   }}
                   className="mt-4 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-black transition shadow-sm"
                 >
@@ -179,29 +175,9 @@ export default function ContactPage() {
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
                     To prevent spam and SQL/NoSQL injections, please enter the
-                    6-digit verification code sent to your email.
+                    6-digit verification code sent to your email inbox.
                   </p>
                 </div>
-
-                {/* Local Demo Helper Box */}
-                {demoOtp && (
-                  <div className="p-4 bg-amber-50 border border-amber-200 rounded-2xl flex items-center justify-between text-xs text-amber-900">
-                    <div className="flex items-center gap-2">
-                      <KeyRound size={18} className="text-amber-600 shrink-0" />
-                      <div>
-                        <span className="font-bold uppercase block text-[10px] text-amber-700">
-                          Testing Environment Code
-                        </span>
-                        <span>
-                          Your automated OTP is:{" "}
-                          <strong className="font-mono text-base tracking-widest bg-amber-100 px-2 py-0.5 rounded ml-1">
-                            {demoOtp}
-                          </strong>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
 
                 <form action={dispatchVerify} className="space-y-6">
                   <input
@@ -341,13 +317,12 @@ export default function ContactPage() {
                       name="subject"
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-pharma-blue focus:ring-4 focus:ring-blue-50 outline-none transition text-sm font-medium bg-white"
                     >
-                      <option value="Distributorship Application">
-                        Distributorship Application
-                      </option>
                       <option value="Inquiry for Third Party Manufacturing">
                         Inquiry for Third Party Manufacturing
                       </option>
-
+                      <option value="Distributorship Application">
+                        Distributorship Application
+                      </option>
                       <option value="Export & Global Distribution">
                         Export & Global Distribution
                       </option>
