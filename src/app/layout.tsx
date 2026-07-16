@@ -1,26 +1,32 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import ChatWidget from "@/components/features/RoxyAI/ChatWidget"; // <--- Import this
-import Footer from "@/components/layout/Footer";
-import TopBar from "@/components/layout/TopBar";
+import LocalChatWidget from "@/components/features/RoxyAI/ChatWidget";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Roxane Laboratories",
-  description: "Reliable Pharmaceutical Formulations",
+  title: "Roxane Laboratories | WHO-GMP Certified Pharma Manufacturer",
+  description:
+    "A modern, high-performance web platform for a pharmaceutical manufacturing unit.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body>
-        <TopBar />
+      <body
+        className={`${inter.className} min-h-screen bg-slate-50 text-slate-900 antialiased`}
+      >
+        {/* 
+          ONLY render global children and floating widgets here! 
+          NO TopBar, NO Navbar, NO Footer — this keeps /login and /dashboard 100% clean and isolated!
+        */}
         {children}
-        <ChatWidget />
-        <Footer />
+        <LocalChatWidget />
       </body>
     </html>
   );
