@@ -1,80 +1,71 @@
-import { ArrowRight, CheckCircle } from "lucide-react";
+"use client";
+
+import Link from "next/link";
+import { Network, ArrowRight, CheckCircle2, Users } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      {/* Background Decorative Blob (The "Modern" touch) */}
-      <div className="absolute top-0 right-0 -z-10 opacity-30 transform translate-x-1/3 -translate-y-1/4">
-        <div className="w-[800px] h-[800px] bg-pharma-teal rounded-full blur-3xl filter" />
-      </div>
+    <section className="bg-slate-900 text-white relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-36 border-b border-slate-800">
+      {/* Subtle Architectural Grid Background */}
+      <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+      <div className="absolute -right-20 -top-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -left-20 -bottom-20 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Text Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-pharma-blue text-sm font-semibold">
-              <span className="w-2 h-2 bg-pharma-teal rounded-full mr-2 animate-pulse"></span>
-              WHO-GMP Certified Manufacturing
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
+        <div className="inline-flex items-center gap-2 bg-slate-800/80 border border-slate-700/80 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-teal-400 shadow-sm animate-in fade-in duration-500">
+          <Network size={14} className="text-teal-400 animate-pulse" />
+          <span>WHO-GMP Certified Strategic Partner Network</span>
+        </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              Precision in <br />
-              <span className="text-pharma-blue">Every Formulation</span>
-            </h1>
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight max-w-5xl mx-auto leading-[1.1] text-white">
+          Precision Pharmaceutical <br className="hidden sm:inline" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400">
+            Manufacturing & Aggregation
+          </span>
+        </h1>
 
-            <p className="text-lg text-gray-600 max-w-lg">
-              Delivering reliable, high-quality pharmaceutical solutions since
-              19XX. Partnering with global leaders to ensure health accessible
-              to all.
-            </p>
+        <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
+          Roxane Laboratories bridges high-capacity, WHO-GMP compliant Baddi
+          infrastructure with premier clinical brands. We deliver scalable
+          third-party contract manufacturing, rigorous NABL/HPLC lab
+          verification, and rapid Pan-India dispatch.
+        </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center px-8 py-4 bg-pharma-blue text-white rounded-lg font-bold hover:bg-blue-900 transition group">
-                View Product Catalog
-                <ArrowRight
-                  className="ml-2 group-hover:translate-x-1 transition"
-                  size={20}
-                />
-              </button>
-              <button className="flex items-center justify-center px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-lg font-bold hover:bg-gray-50 transition">
-                Partner With Us
-              </button>
-            </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <Link
+            href="/products"
+            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 text-white font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-blue-900/30 transition flex items-center justify-center gap-2 text-sm"
+          >
+            <span>Explore Formulation Catalog</span>
+            <ArrowRight size={16} />
+          </Link>
 
-            {/* Trust Badges (Static for now) */}
-            <div className="pt-8 flex items-center gap-6 text-sm font-medium text-gray-500">
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-pharma-teal" /> ISO
-                9001:2015
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-pharma-teal" /> WHO-GMP
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-pharma-teal" /> 100%
-                Quality Check
-              </div>
-            </div>
-          </div>
+          <Link
+            href="/login"
+            className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold px-8 py-4 rounded-xl transition flex items-center justify-center gap-2 text-sm"
+          >
+            <Users size={16} className="text-teal-400" />
+            <span>Partner Portal Access</span>
+          </Link>
+        </div>
 
-          {/* Right: Visual Placeholder (We will add 3D/Image later) */}
-          <div className="hidden lg:block relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-              {/* Placeholder for Lab Image */}
-              <div className="bg-slate-200 h-[500px] w-full flex items-center justify-center text-gray-400"></div>
-
-              {/* Floating Stats Card */}
-              <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur p-4 rounded-lg shadow-lg border border-slate-100">
-                <p className="text-sm text-gray-500">
-                  Daily Production Capacity
-                </p>
-                <p className="text-2xl font-bold text-pharma-blue">
-                  2,000,000+
-                </p>
-                <p className="text-xs text-pharma-teal">Tablets & Capsules</p>
-              </div>
-            </div>
-          </div>
+        <div className="pt-8 flex flex-wrap items-center justify-center gap-6 md:gap-12 text-xs font-semibold text-slate-400 border-t border-slate-800/80 max-w-4xl mx-auto">
+          <span className="flex items-center gap-1.5">
+            <CheckCircle2 size={16} className="text-teal-400" /> IP / BP / USP
+            Compliant
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle2 size={16} className="text-teal-400" /> Excise-Free
+            Baddi Cluster
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle2 size={16} className="text-teal-400" /> 100%
+            Independent Lab Audit
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle2 size={16} className="text-teal-400" /> Strict AHU
+            Cleanroom Zones
+          </span>
         </div>
       </div>
     </section>
