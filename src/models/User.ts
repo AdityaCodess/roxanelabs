@@ -4,7 +4,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   passwordHash: string;
-  role: "DISTRIBUTOR" | "OPERATIONS_ADMIN" | "EXECUTIVE_CEO";
+  role: "PARTNER" | "ADMIN";
   companyName?: string;
   gstNumber?: string;
   isKycApproved: boolean;
@@ -19,8 +19,8 @@ const UserSchema: Schema<IUser> = new Schema(
     passwordHash: { type: String, required: true },
     role: {
       type: String,
-      enum: ["DISTRIBUTOR", "OPERATIONS_ADMIN", "EXECUTIVE_CEO"],
-      default: "DISTRIBUTOR",
+      enum: ["PARTNER", "ADMIN"],
+      default: "PARTNER",
       required: true,
     },
     companyName: { type: String, trim: true },

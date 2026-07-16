@@ -26,16 +26,15 @@ export async function loginAction(prevState: any, formData: FormData) {
       return { success: false, error: "Invalid credentials provided." };
     }
 
-    // 3. Document Activity to the CEO Dashboard Audit Ledger
+    // 3. Document Activity to the Admin Audit Ledger
     await AuditLog.create({
       actor: user._id,
       actorRole: user.role,
       actionType: "SYSTEM_LOGIN",
       targetResource: `User Session: ${user.email}`,
-      description: `Successful system login authenticated via gateway.`,
+      description: `Successful system login authenticated via gateway. Role: ${user.role}.`,
     });
 
-    // Return authorization packet back to client view
     return {
       success: true,
       role: user.role,
@@ -69,13 +68,11 @@ export async function registerAction(prevState: any, formData: FormData) {
       return { success: false, error: "An account with this email already exists." };
     }
 
-    // Enforce role assignment or fall back safely to external distributor tier
-    const finalRole = ["OPERATIONS_ADMIN", "EXECUTIVE_CEO"].includes(requestedRole) 
-      ? requestedRole 
-      : "DISTRIBUTOR";
+    // Strictly type the literal union to prevent TypeScript string inference failures
+    const finalRole: "PARTNER" | "ADMIN" = requestedRole === "ADMIN" ? "ADMIN" : "PARTNER";
 
-    // Auto-approve administrative system accounts for quick development testing
-    const autoApproveKyc = finalRole !== "DISTRIBUTOR";
+    // Auto-approve internal administrative accounts; require KYC for partners
+    const autoApproveKyc = finalRole === "ADMIN";
 
     // Create the persistent user record
     const newUser = await User.create({
@@ -83,8 +80,8 @@ export async function registerAction(prevState: any, formData: FormData) {
       email: email.toLowerCase(),
       passwordHash: password,
       role: finalRole,
-      companyName: finalRole === "DISTRIBUTOR" ? companyName : undefined,
-      gstNumber: finalRole === "DISTRIBUTOR" ? gstNumber : undefined,
+      companyName: finalRole === "PARTNER" ? companyName : undefined,
+      gstNumber: finalRole === "PARTNER" ? gstNumber : undefined,
       isKycApproved: autoApproveKyc,
     });
 
@@ -94,17 +91,17 @@ export async function registerAction(prevState: any, formData: FormData) {
       actorRole: newUser.role,
       actionType: "KYC_APPROVAL",
       targetResource: `Account Identity: ${newUser.email}`,
-      description: `New user registration compiled. Account structural assignment: ${finalRole}.`,
+      description: `New account registered. Assigned structure: ${finalRole}. KYC Approved: ${autoApproveKyc}.`,
     });
 
     return { 
       success: true, 
-      message: finalRole === "DISTRIBUTOR" 
-        ? "Application submitted successfully! Awaiting manual KYC approval." 
-        : "Account established instantly. Proceeding to authentication portal."
+      message: finalRole === "PARTNER" 
+        ? "Partner application submitted! Awaiting manual KYC verification by Plant Admins." 
+        : "Admin account established instantly. You may now authenticate."
     };
   } catch (error: any) {
     console.error("Registration Processing Failure:", error);
-    return { success: false, error: "Failed to compile corporate partnership profile." };
+    return { success: false, error: "Failed to compile registration profile." };
   }
 }

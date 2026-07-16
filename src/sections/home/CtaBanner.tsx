@@ -9,12 +9,12 @@ export default function CtaBanner() {
       <div className="bg-white rounded-2xl p-8 md:p-12 border border-slate-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="space-y-2 max-w-xl text-center md:text-left">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">
-            Ready to Partner With Our Distribution Network?
+            Partner With Us for Direct Institutional & Retail Supply
           </h2>
           <p className="text-sm text-slate-600 leading-relaxed">
-            Contact our B2B sales leads today to request current stock
-            availability lists, wholesale pricing structures, or regional
-            distributorship opportunities.
+            Contact our sales desk to request hospital procurement price lists,
+            retail wholesale catalogs, or sample batch COAs for your clinical
+            dispensary.
           </p>
         </div>
 
@@ -23,7 +23,7 @@ export default function CtaBanner() {
             href="/contact"
             className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 rounded-lg transition duration-150 flex items-center justify-center gap-2 text-sm text-center shadow-sm"
           >
-            <span>Submit B2B Inquiry</span>
+            <span>Submit Procurement Inquiry</span>
             <ArrowRight size={16} />
           </Link>
 
@@ -31,7 +31,7 @@ export default function CtaBanner() {
             href="/login"
             className="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-6 py-3.5 rounded-lg transition duration-150 flex items-center justify-center gap-2 text-sm text-center"
           >
-            <span>Partner Portal Login</span>
+            <span>Partner Portal Access</span>
           </Link>
         </div>
       </div>

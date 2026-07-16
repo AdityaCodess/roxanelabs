@@ -2,9 +2,9 @@ import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
 export interface IAuditLog extends Document {
   actor: Types.ObjectId;
-  actorRole: "DISTRIBUTOR" | "OPERATIONS_ADMIN" | "EXECUTIVE_CEO";
+  actorRole: "PARTNER" | "ADMIN";
   actionType: "INVENTORY_OVERRIDE" | "ORDER_STATUS_CHANGE" | "KYC_APPROVAL" | "SECURITY_ALERT" | "SYSTEM_LOGIN";
-  targetResource: string; // e.g., "Product: RoxCip-500" or "Order: #ORD-8821"
+  targetResource: string;
   description: string;
   ipAddress?: string;
   metadata?: Record<string, any>;
@@ -14,7 +14,11 @@ export interface IAuditLog extends Document {
 const AuditLogSchema: Schema<IAuditLog> = new Schema(
   {
     actor: { type: Schema.Types.ObjectId, ref: "User", required: true, index: true },
-    actorRole: { type: String, required: true },
+    actorRole: { 
+      type: String, 
+      enum: ["PARTNER", "ADMIN"],
+      required: true 
+    },
     actionType: {
       type: String,
       enum: [
@@ -34,7 +38,7 @@ const AuditLogSchema: Schema<IAuditLog> = new Schema(
     timestamp: { type: Date, default: Date.now, index: true },
   },
   {
-    timestamps: false, // Using explicit timestamp field for chronological indexing
+    timestamps: false,
   }
 );
 
