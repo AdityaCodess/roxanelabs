@@ -35,3 +35,4 @@ firebase.json
 .env.local.build
 .env.*.local
 .env.*.build
+next-env.d.ts
