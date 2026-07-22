@@ -80,10 +80,10 @@ export default function LocalChatWidget() {
             To check live production or dispatch status, please reply with your
             **Batch ID** or **Order Number**.
           </p>
-          <div className="p-2 bg-blue-50 border border-blue-100 rounded-lg text-xs text-pharma-blue">
+          <div className="p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-xs text-slate-800">
             💡 **Demo Hint:** Try typing{" "}
             <span
-              className="font-mono font-bold underline cursor-pointer"
+              className="font-mono font-bold text-teal-600 underline cursor-pointer"
               onClick={() => handleSend("ROX-2025-LIVE")}
             >
               ROX-2025-LIVE
@@ -101,13 +101,13 @@ export default function LocalChatWidget() {
       q.includes("2025")
     ) {
       return (
-        <div className="bg-slate-900 text-white p-3 rounded-xl space-y-2 text-xs border border-slate-700">
+        <div className="bg-slate-900 text-white p-3.5 rounded-xl space-y-2 text-xs border border-slate-700 shadow-md">
           <div className="flex items-center justify-between border-b border-slate-700 pb-2">
-            <span className="font-mono font-bold text-pharma-teal">
+            <span className="font-mono font-bold text-teal-400">
               BATCH #ROX-2025-LIVE
             </span>
-            <span className="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>{" "}
+            <span className="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded text-[10px] font-bold flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>{" "}
               ACTIVE
             </span>
           </div>
@@ -118,8 +118,9 @@ export default function LocalChatWidget() {
             **Current Stage:** Phase 4 — Automated Film Coating
           </p>
           <p className="text-slate-300">**Facility:** Plant 1, Baddi (HP)</p>
-          <div className="pt-1 text-pharma-teal font-medium flex items-center gap-1">
-            <CheckCircle2 size={14} /> Estimated Dispatch: 48 Hours
+          <div className="pt-1 text-teal-400 font-semibold flex items-center gap-1.5">
+            <CheckCircle2 size={14} className="text-teal-400" /> Estimated
+            Dispatch: 48 Hours
           </div>
         </div>
       );
@@ -138,18 +139,18 @@ export default function LocalChatWidget() {
       const randomTicket = Math.floor(1000 + Math.random() * 9000);
       return (
         <div className="space-y-2">
-          <p className="font-semibold text-slate-800">
+          <p className="font-bold text-slate-900">
             I have initiated a Priority Support escalation.
           </p>
           <p>
             Your temporary ticket ID is **#SUP-{randomTicket}**. Our QA and
             Sales support team operates 24/7.
           </p>
-          <div className="p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 space-y-1">
+          <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 space-y-1.5">
             <p className="font-bold">⚡ Instant escalation channels:</p>
             <p>📞 **Plant Support:** +91 1795-XXXXXX</p>
             <p>📧 **Email:** support@roxane.com</p>
-            <p className="text-[10px] text-amber-700 pt-1">
+            <p className="text-[10px] text-amber-700 pt-1 font-medium">
               An agent will review your session history and reply within 2
               hours.
             </p>
@@ -169,11 +170,11 @@ export default function LocalChatWidget() {
     ) {
       return (
         <div className="space-y-2">
-          <p>
+          <p className="font-semibold text-slate-900">
             If you are experiencing authentication errors on the **Partner
             Portal**, please verify the following:
           </p>
-          <ul className="list-disc pl-4 space-y-1 text-xs text-slate-600">
+          <ul className="list-disc pl-4 space-y-1.5 text-xs text-slate-600">
             <li>
               Distributor accounts require manual KYC activation by our sales
               team.
@@ -185,11 +186,11 @@ export default function LocalChatWidget() {
             <li>
               **For Demo Testing:** You can log into the portal using the
               credentials{" "}
-              <code className="bg-slate-200 px-1 py-0.5 rounded font-bold text-slate-800">
+              <code className="bg-slate-200 px-1.5 py-0.5 rounded font-mono font-bold text-slate-900">
                 admin
               </code>{" "}
               /{" "}
-              <code className="bg-slate-200 px-1 py-0.5 rounded font-bold text-slate-800">
+              <code className="bg-slate-200 px-1.5 py-0.5 rounded font-mono font-bold text-slate-900">
                 admin
               </code>
               .
@@ -264,30 +265,30 @@ export default function LocalChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {isOpen ? (
-        <div className="bg-white w-80 md:w-96 h-[500px] rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
-          {/* Header */}
-          <div className="bg-pharma-blue text-white p-4 flex justify-between items-center bg-gradient-to-r from-pharma-blue to-slate-900">
+        <div className="bg-white w-80 md:w-96 h-[500px] rounded-2xl shadow-2xl border border-slate-300 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+          {/* Header (Clean Slate-900 to match website headers) */}
+          <div className="bg-slate-900 text-white p-4 flex justify-between items-center border-b border-slate-800">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-white/10 rounded-xl relative">
-                <Headphones size={20} className="text-pharma-teal" />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-pharma-blue rounded-full"></span>
+              <div className="p-2 bg-slate-800 rounded-xl relative border border-slate-700">
+                <Headphones size={20} className="text-teal-400" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
               </div>
               <div>
-                <h3 className="font-bold text-sm flex items-center gap-1.5">
+                <h3 className="font-bold text-sm flex items-center gap-1.5 text-white">
                   Roxy Support Desk{" "}
                   <Sparkles
                     size={12}
                     className="text-amber-300 fill-amber-300"
                   />
                 </h3>
-                <span className="text-[10px] text-slate-300 block">
+                <span className="text-[10px] text-slate-400 block font-medium">
                   Automated FAQ & Ticketing System
                 </span>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-slate-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition"
+              className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition cursor-pointer"
             >
               <X size={20} />
             </button>
@@ -301,10 +302,10 @@ export default function LocalChatWidget() {
                 className={`flex gap-2 max-w-[88%] ${msg.sender === "user" ? "ml-auto flex-row-reverse" : ""}`}
               >
                 <div
-                  className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-sm ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 shadow-xs font-bold ${
                     msg.sender === "user"
-                      ? "bg-pharma-teal text-white"
-                      : "bg-pharma-blue text-white"
+                      ? "bg-teal-600 text-white"
+                      : "bg-slate-900 text-white"
                   }`}
                 >
                   {msg.sender === "user" ? (
@@ -315,10 +316,10 @@ export default function LocalChatWidget() {
                 </div>
 
                 <div
-                  className={`p-3.5 rounded-2xl ${
+                  className={`p-3.5 rounded-2xl text-xs sm:text-sm font-medium ${
                     msg.sender === "user"
-                      ? "bg-pharma-blue text-white rounded-tr-none shadow-sm"
-                      : "bg-white text-slate-700 border border-slate-200/80 rounded-tl-none shadow-sm leading-relaxed"
+                      ? "bg-slate-900 text-white rounded-tr-none shadow-sm"
+                      : "bg-white text-slate-800 border border-slate-200 rounded-tl-none shadow-xs leading-relaxed"
                   }`}
                 >
                   {msg.text}
@@ -329,10 +330,10 @@ export default function LocalChatWidget() {
             {/* Typing Indicator */}
             {isTyping && (
               <div className="flex gap-2 max-w-[80%]">
-                <div className="w-7 h-7 rounded-full bg-pharma-blue text-white flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0 mt-0.5">
                   <Bot size={14} />
                 </div>
-                <div className="p-3 bg-white border border-slate-200 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
+                <div className="p-3 bg-white border border-slate-200 rounded-2xl rounded-tl-none shadow-xs flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
                   <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
                   <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>
@@ -342,24 +343,24 @@ export default function LocalChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Support Actions (Horizontal Scroll) */}
-          <div className="p-2 bg-white border-t border-slate-100 flex gap-1.5 overflow-x-auto no-scrollbar">
+          {/* Quick Support Actions (Fixed broken bg-blue to bg-white) */}
+          <div className="p-2.5 bg-white border-t border-slate-200 flex gap-1.5 overflow-x-auto no-scrollbar">
             {QUICK_ACTIONS.map((action, idx) => {
               const IconComponent = action.icon;
               return (
                 <button
                   key={idx}
                   onClick={() => handleSend(action.query)}
-                  className="text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-pharma-blue hover:border-blue-200 text-slate-700 px-3 py-1.5 rounded-full whitespace-nowrap border border-slate-200 transition font-medium flex items-center gap-1.5 shrink-0 shadow-2xs"
+                  className="text-[11px] bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 px-3 py-1.5 rounded-full whitespace-nowrap border border-slate-200 transition font-semibold flex items-center gap-1.5 shrink-0 shadow-2xs cursor-pointer"
                 >
-                  <IconComponent size={13} className="text-pharma-teal" />
+                  <IconComponent size={13} className="text-teal-600 shrink-0" />
                   {action.label}
                 </button>
               );
             })}
           </div>
 
-          {/* Input Form */}
+          {/* Input Form (Fixed broken bg-blue to bg-white) */}
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -372,31 +373,33 @@ export default function LocalChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask for support, track batch, or type 'agent'..."
-              className="flex-1 px-3.5 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-pharma-blue focus:ring-1 focus:ring-pharma-blue bg-slate-50/50"
+              className="flex-1 px-3.5 py-2.5 border border-slate-300 rounded-xl text-xs sm:text-sm font-medium focus:outline-hidden focus:border-slate-900 focus:ring-1 focus:ring-slate-900 bg-slate-50 text-slate-900 placeholder:text-slate-400"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="bg-pharma-blue text-white p-2.5 rounded-xl hover:bg-blue-900 disabled:opacity-40 disabled:hover:bg-pharma-blue transition flex items-center justify-center shrink-0 shadow-sm"
+              className="bg-slate-900 text-white p-2.5 rounded-xl hover:bg-slate-800 disabled:opacity-40 disabled:hover:bg-slate-900 transition flex items-center justify-center shrink-0 shadow-sm cursor-pointer"
             >
               <Send size={16} />
             </button>
           </form>
         </div>
       ) : (
-        /* CLOSED FLOATING BADGE */
+        /* CLOSED FLOATING BADGE (High contrast dark slate so it never vanishes!) */
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-pharma-blue hover:bg-slate-900 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-3 group hover:scale-105 transition-all duration-300 relative border-2 border-white/20"
+          className="bg-slate-900 hover:bg-slate-800 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-3 group hover:scale-105 transition-all duration-300 relative border-2 border-slate-700 cursor-pointer"
         >
           <div className="relative">
-            <Headphones size={22} className="text-pharma-teal" />
+            <Headphones size={22} className="text-teal-400" />
             <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
           </div>
-          <span className="font-bold text-sm tracking-wide">Support Desk</span>
+          <span className="font-bold text-sm tracking-wide text-white">
+            Support Desk
+          </span>
         </button>
       )}
     </div>
