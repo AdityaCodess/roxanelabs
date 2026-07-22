@@ -1,187 +1,142 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import {
   ShieldCheck,
   FileText,
   Truck,
   ArrowRight,
+  CheckCircle,
   Building2,
   Store,
 } from "lucide-react";
 
 export default function Advantage() {
-  const [viewMode, setViewMode] = useState<"HOSPITAL" | "RETAIL">("HOSPITAL");
-
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 space-y-10">
-      <div className="bg-slate-900 rounded-2xl p-8 md:p-12 text-white border border-slate-800">
-        {/* Header with Interactive Perspective Switcher */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-slate-800 pb-8">
-          <div className="max-w-xl space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-              Tailored Supply Chain Execution
-            </h2>
-            <p className="text-sm text-slate-300 leading-relaxed">
-              We structure our pricing, batch documentation, and packaging
-              formats to match your specific operational model. Select your
-              institution type below:
-            </p>
-          </div>
-
-          {/* Institutional vs Retail Segmented Toggle */}
-          <div className="bg-slate-800 p-1.5 rounded-xl flex items-center gap-1 border border-slate-700 self-start md:self-auto shrink-0">
-            <button
-              onClick={() => setViewMode("HOSPITAL")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition cursor-pointer ${
-                viewMode === "HOSPITAL"
-                  ? "bg-white text-slate-900 shadow-sm"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Building2
-                size={16}
-                className={
-                  viewMode === "HOSPITAL" ? "text-blue-600" : "text-slate-400"
-                }
-              />
-              <span>Hospital Dispensaries</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode("RETAIL")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition cursor-pointer ${
-                viewMode === "RETAIL"
-                  ? "bg-white text-slate-900 shadow-sm"
-                  : "text-slate-400 hover:text-white"
-              }`}
-            >
-              <Store
-                size={16}
-                className={
-                  viewMode === "RETAIL" ? "text-teal-600" : "text-slate-400"
-                }
-              />
-              <span>Retail Chemists & Stores</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Dynamic Cards: HOSPITAL VIEW */}
-        {viewMode === "HOSPITAL" ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-300">
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
-                <ShieldCheck size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                100% Audit-Ready Compliance
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                We provide complete institutional documentation with every
-                consignment, including NABL-accredited HPLC assay reports,
-                dissolution profiles, and statutory batch records.
-              </p>
-            </div>
-
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
-                <FileText size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                Hospital Procurement Rates
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Direct wholesale contracts tailored for hospital formularies and
-                central purchase committees, bypassing regional distributor
-                markups to maximize dispensary budgets.
-              </p>
-            </div>
-
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
-                <Truck size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                Critical Stock Buffers
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                We maintain dedicated emergency buffers for our hospital
-                partners to guarantee zero stock-outs on essential life-saving
-                antibiotics, IV fluids, and cardiac prescriptions.
-              </p>
-            </div>
-          </div>
-        ) : (
-          /* Dynamic Cards: RETAIL CHEMIST VIEW */
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in duration-300">
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 font-bold">
-                <ShieldCheck size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                High-Margin Fast Movers
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Our catalog focuses heavily on high-demand, high-turnover acute
-                prescriptions and OTC pain relievers that generate steady daily
-                footfall and excellent retail profitability.
-              </p>
-            </div>
-
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 font-bold">
-                <FileText size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                Tamper-Evident Packaging
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Premium Alu-Alu and blister packaging designed to withstand
-                extreme temperature and humidity changes on retail shelves while
-                ensuring zero foil leakage or discoloration.
-              </p>
-            </div>
-
-            <div className="bg-slate-800/60 border border-slate-700/80 p-6 rounded-xl space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 font-bold">
-                <Truck size={20} />
-              </div>
-              <h3 className="text-base font-bold text-white">
-                Rapid Stock Replenishment
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Flexible MOQ (Minimum Order Quantity) structures and reliable
-                regional dispatch ensure your chemist shop can restock
-                fast-moving brands without locking up excess working capital.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Footer */}
-        <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-400">
-          <span>
-            Current Active Mode:{" "}
-            <strong className="text-white uppercase">
-              {viewMode === "HOSPITAL"
-                ? "Institutional Formulary Supply"
-                : "Retail Chemist Distribution"}
-            </strong>
+      {/* Clean Corporate Section Header */}
+      <div className="border-b border-slate-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="space-y-1 max-w-2xl">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded border border-emerald-200">
+            Supply Chain Reliability
           </span>
-          <Link
-            href="/contact"
-            className="text-slate-300 hover:text-white inline-flex items-center gap-1.5 underline underline-offset-4"
-          >
-            <span>
-              Request{" "}
-              {viewMode === "HOSPITAL" ? "Hospital Procurement" : "Wholesaler"}{" "}
-              Price List
-            </span>
-            <ArrowRight size={14} />
-          </Link>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-2">
+            Why Hospitals & Chemists Rely on Our Distribution
+          </h2>
+          <p className="text-sm text-slate-600">
+            We eliminate middleman bottlenecks and quality guesswork for
+            institutional healthcare providers and retail pharmacies across
+            India.
+          </p>
         </div>
+        <div className="text-xs font-semibold text-slate-700 bg-slate-100 px-3.5 py-2 rounded border border-slate-200 self-start md:self-auto shrink-0 flex items-center gap-2">
+          <CheckCircle size={14} className="text-emerald-600" />
+          <span>Direct Depot-to-Store Supply</span>
+        </div>
+      </div>
+
+      {/* Grounded 3-Column Logistics & Compliance Grid (No neon glow, no AI SaaS gimmicks) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Box 1: Audit & Compliance */}
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3">
+          <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-[#0B1D3A] font-bold">
+            <ShieldCheck size={20} />
+          </div>
+          <h3 className="text-base font-bold text-slate-900">
+            100% Batch COA Audit Trail
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            Every physical consignment dispatched to your hospital or retail
+            shop is accompanied by an independent NABL-accredited Certificate of
+            Analysis (COA) verifying HPLC chemical assay and dissolution
+            standards.
+          </p>
+          <div className="pt-2 border-t border-slate-100 text-[11px] font-semibold text-slate-500">
+            <span>Standard: IP / BP / USP Pharmacopeia</span>
+          </div>
+        </div>
+
+        {/* Box 2: Direct Wholesale Margins */}
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3">
+          <div className="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 font-bold">
+            <FileText size={20} />
+          </div>
+          <h3 className="text-base font-bold text-slate-900">
+            Direct Wholesale Billing
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            We bill directly from our excise-advantaged Baddi depots to hospital
+            procurement committees and retail chemists. Removing multi-tier
+            super-stockist markups provides competitive margins for your
+            dispensary.
+          </p>
+          <div className="pt-2 border-t border-slate-100 text-[11px] font-semibold text-slate-500">
+            <span>Billing: GST Compliant Tax Invoices</span>
+          </div>
+        </div>
+
+        {/* Box 3: Stock Buffers & Transit */}
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3">
+          <div className="w-10 h-10 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-700 font-bold">
+            <Truck size={20} />
+          </div>
+          <h3 className="text-base font-bold text-slate-900">
+            Zero-Stockout Buffer Buffer
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            We maintain dedicated safety buffers for fast-moving acute
+            antibiotics, cardiac, and chronic medications. Consignments move via
+            humidity-controlled transit to protect Alu-Alu and blister foil
+            integrity.
+          </p>
+          <div className="pt-2 border-t border-slate-100 text-[11px] font-semibold text-slate-500">
+            <span>Logistics: Pan-India Express Transit</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Target Buyer Split Box (Grounded, plain English breakdown without toggle toys) */}
+      <div className="bg-slate-900 text-white rounded-xl p-6 sm:p-8 border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+        <div className="space-y-2 md:pr-6">
+          <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+            <Building2 size={18} />
+            <span>For Hospital Dispensaries & Institutions</span>
+          </div>
+          <p className="text-xs text-slate-300 leading-relaxed">
+            We support hospital formularies with institutional pack sizes, rapid
+            tender processing, and emergency stock reservation for critical
+            inpatient intensive care prescriptions.
+          </p>
+        </div>
+
+        <div className="space-y-2 pt-6 md:pt-0 md:pl-6">
+          <div className="flex items-center gap-2 text-blue-400 font-bold text-sm">
+            <Store size={18} />
+            <span>For Retail Chemists & Medical Stores</span>
+          </div>
+          <p className="text-xs text-slate-300 leading-relaxed">
+            High-margin fast movers, tamper-evident leak-proof packaging, and
+            flexible wholesale MOQ structures that allow chemist shops to
+            replenish shelves without locking up cash flow.
+          </p>
+        </div>
+      </div>
+
+      {/* Section Footer Link */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-600 pt-2">
+        <span>
+          Quality Protocol:{" "}
+          <strong className="text-slate-900">
+            WHO-GMP Audited Partner Facilities
+          </strong>
+        </span>
+        <Link
+          href="/products"
+          className="text-emerald-700 hover:text-emerald-900 inline-flex items-center gap-1 underline underline-offset-4 font-bold"
+        >
+          <span>View 300+ Commercial Formulations & Packaging Specs</span>
+          <ArrowRight size={14} />
+        </Link>
       </div>
     </section>
   );

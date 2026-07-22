@@ -1,170 +1,113 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import {
-  CheckCircle2,
-  Factory,
-  Cpu,
-  Award,
-  Layers,
-  FlaskConical,
-  Box,
-  Activity,
-  Truck,
   ShieldCheck,
-  Sparkles,
+  CheckCircle2,
+  FileCheck,
+  Truck,
   ArrowRight,
-  Gauge,
-  Network,
+  Layers,
+  Clock,
+  Package,
+  Award,
 } from "lucide-react";
 
-// Dynamic Process Pipeline Data (Reframed for Partner Network Facilitation)
-const PROCESS_STEPS = [
-  {
-    step: "01",
-    title: "Formulation Selection & Dossiers",
-    subtitle: "Salt Profiling & Regulatory Alignment",
-    desc: "Choose from our catalog of over 300+ approved IP/BP/USP pharmaceutical formulations. Our technical team coordinates initial compatibility checks, stability profiling, and statutory regulatory dossier alignment with our manufacturing partners.",
-    badge: "Stage 01 // Technical Alignment",
-    icon: FlaskConical,
-    metricLabel: "Formulation Catalog",
-    metricValue: "300+ Tested Salts",
-    highlightColor: "from-blue-500 to-cyan-400",
-  },
-  {
-    step: "02",
-    title: "Packaging Design & Branding",
-    subtitle: "Alu-Alu, Blister & Foil Customization",
-    desc: "Our integrated branding studio designs high-impact cartons, tamper-evident blister foils, and bottle labels. We ensure 100% compliance with statutory drug labeling laws while giving your brand a distinct visual edge.",
-    badge: "Stage 02 // Design Studio",
-    icon: Box,
-    metricLabel: "Packaging Formats",
-    metricValue: "12+ Blister & Bottle Types",
-    highlightColor: "from-teal-500 to-emerald-400",
-  },
-  {
-    step: "03",
-    title: "WHO-GMP Partner Production",
-    subtitle: "Automated High-Speed Granulation & Compression",
-    desc: "Production kicks off inside our audited partner facilities in Baddi. High-speed rotary compression machines and automated fluid bed dryers operate under strict Class-100,000 cleanroom HVAC zoning to guarantee zero cross-contamination.",
-    badge: "Stage 03 // Network Plant Live",
-    icon: Activity,
-    metricLabel: "Network Batch Output",
-    metricValue: "2.5 Million Units / Day",
-    highlightColor: "from-indigo-500 to-purple-400",
-  },
-  {
-    step: "04",
-    title: "Independent QC Testing & Dispatch",
-    subtitle: "NABL/HPLC Assay Analysis & Insured Logistics",
-    desc: "No batch is released without passing rigorous analytical HPLC and dissolution testing in certified, independent QC laboratories. Once verified, finished goods are palletized and dispatched through humidity-controlled logistics networks.",
-    badge: "Stage 04 // QC Audit & Transit",
-    icon: Truck,
-    metricLabel: "Quality Pass Rate",
-    metricValue: "99.98% Batch Accuracy",
-    highlightColor: "from-amber-500 to-orange-400",
-  },
-];
-
 export default function ManufacturingPage() {
-  // Tracks the active step as the user scrolls or hovers
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const activeStep = PROCESS_STEPS[activeStepIndex];
-  const ActiveIcon = activeStep.icon;
-
   return (
-    <div className="bg-slate-50 min-h-screen pb-24 font-sans selection:bg-blue-500 selection:text-white">
-      {/* Page Header Banner */}
-      <div className="bg-pharma-blue text-white pt-20 pb-16 text-center px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
-        <div className="relative z-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-pharma-teal bg-teal-950/80 border border-teal-500/30 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-4 shadow-sm">
-            <Network size={14} className="text-teal-400 animate-pulse" />
-            Strategic WHO-GMP Partner Network
-          </span>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight">
-            Third-Party Manufacturing
+    <div className="bg-slate-50 min-h-screen pb-24 font-sans selection:bg-teal-500 selection:text-white">
+      {/* Clean Standardized Header Banner (Matches Homepage 100%) */}
+      <div className="bg-slate-900 text-white pt-20 pb-20 text-center px-4 border-b border-slate-800">
+        <div className="max-w-4xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 px-3.5 py-1.5 rounded-md text-xs font-semibold text-slate-300 tracking-wide shadow-xs">
+            <ShieldCheck size={14} className="text-teal-400" />
+            <span>Excise-Free Baddi Production Cluster</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+            WHO-GMP Production & Quality Network
           </h1>
-          <p className="mt-4 text-blue-100 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Leverage our premier network of WHO-GMP certified manufacturing
-            partner facilities in Baddi for scalable contract production, rapid
-            batch turnaround, and uncompromising clinical precision.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+            Roxane Laboratories aggregates automated, audited manufacturing
+            lines in Baddi, Himachal Pradesh. We provide commercial drug brands
+            and hospital formularies with standardized batch production,
+            independent NABL assay verification, and statutory packaging
+            compliance.
           </p>
         </div>
       </div>
 
-      {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 space-y-16">
-        {/* Top Partner Network Specs Card */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-              Network Infrastructure
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 space-y-12">
+        {/* Section 1: Industrial Capacity & Cleanroom Specs Table */}
+        <div className="bg-white rounded-xl p-6 sm:p-10 shadow-md border border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-800 bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
+              Infrastructure Standards
             </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Strategic Manufacturing Partners in Baddi
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+              Automated Cleanroom Facilities in Himachal Pradesh
             </h2>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-              We collaborate exclusively with excise-free, state-of-the-art
-              manufacturing hubs in Himachal Pradesh. Our partner facilities are
-              equipped with automated granulation, high-speed rotary
-              compression, and advanced blister packaging lines operating under
-              strict AHU (Air Handling Unit) cleanroom zones.
+            <p className="text-sm text-slate-600 leading-relaxed font-medium">
+              Our partner facilities operate under strict AHU (Air Handling
+              Unit) Class-100,000 cleanroom zoning to eliminate
+              cross-contamination risks. Equipped with high-speed rotary
+              compression machines, automated granulation, and online blister
+              packaging lines, our network guarantees uniform clinical dosage
+              across every commercial batch.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs font-bold text-slate-800">
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <CheckCircle2 size={18} className="text-teal-600 shrink-0" />
-                <span>1,00,000+ Sq. Ft. Network Area</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-semibold text-slate-800">
+              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <CheckCircle2 size={16} className="text-teal-600 shrink-0" />
+                <span>1,00,000+ Sq. Ft. GMP Floor Area</span>
               </div>
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <CheckCircle2 size={18} className="text-teal-600 shrink-0" />
-                <span>Audited NABL & QC Labs</span>
+              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <CheckCircle2 size={16} className="text-teal-600 shrink-0" />
+                <span>In-House Micro & Chemical QC Labs</span>
               </div>
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <CheckCircle2 size={18} className="text-teal-600 shrink-0" />
+              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <CheckCircle2 size={16} className="text-teal-600 shrink-0" />
                 <span>Zero-Discharge ETP Compliance</span>
               </div>
-              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <CheckCircle2 size={18} className="text-teal-600 shrink-0" />
-                <span>Automated Packaging Lines</span>
+              <div className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <CheckCircle2 size={16} className="text-teal-600 shrink-0" />
+                <span>Alu-Alu, Blister & PET Syrup Lines</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-slate-900 text-white p-8 md:p-10 rounded-3xl space-y-6 relative overflow-hidden shadow-2xl border border-slate-800">
-            <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-teal-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <Gauge size={16} className="text-teal-400" /> Network Daily
-                Capacity
+          {/* Concrete Production Figures Box */}
+          <div className="lg:col-span-5 bg-slate-900 text-white p-6 sm:p-8 rounded-xl space-y-6 border border-slate-800 shadow-lg">
+            <div className="border-b border-slate-800 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+                Network Production Capacity
               </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-ping"></span>
+              <span className="text-sm font-semibold text-teal-400">
+                Daily Audited Output
+              </span>
             </div>
 
-            <div className="space-y-5 text-sm">
-              <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 flex justify-between items-center">
+            <div className="space-y-4 text-sm">
+              <div className="p-3.5 rounded-lg bg-slate-800/80 border border-slate-700/60 flex justify-between items-center">
                 <span className="text-slate-300 font-medium">
                   Tablets & Capsules
                 </span>
-                <span className="font-mono font-bold text-teal-400 text-base">
-                  2.5 Million / Day
+                <span className="font-bold text-white font-mono">
+                  25,00,000 Units / Day
                 </span>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 flex justify-between items-center">
+              <div className="p-3.5 rounded-lg bg-slate-800/80 border border-slate-700/60 flex justify-between items-center">
                 <span className="text-slate-300 font-medium">
                   Liquid Orals & Syrups
                 </span>
-                <span className="font-mono font-bold text-teal-400 text-base">
+                <span className="font-bold text-white font-mono">
                   50,000 Bottles / Day
                 </span>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 flex justify-between items-center">
+              <div className="p-3.5 rounded-lg bg-slate-800/80 border border-slate-700/60 flex justify-between items-center">
                 <span className="text-slate-300 font-medium">
-                  Ointments & External Gels
+                  Ointments & Topicals
                 </span>
-                <span className="font-mono font-bold text-teal-400 text-base">
+                <span className="font-bold text-white font-mono">
                   35,000 Tubes / Day
                 </span>
               </div>
@@ -172,176 +115,156 @@ export default function ManufacturingPage() {
           </div>
         </div>
 
-        {/* ========================================================= */}
-        {/* DYNAMIC STICKY SCROLL TIMELINE ARCHITECTURE               */}
-        {/* ========================================================= */}
-        <div className="pt-8">
-          <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-            <span className="text-xs font-bold uppercase tracking-wider text-pharma-blue bg-blue-50 px-3.5 py-1 rounded-full border border-blue-100">
-              Collaborative Workflow
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              The 4-Stage Contract Pipeline
+        {/* Section 2: The 4-Stage Batch Release Protocol */}
+        <div className="space-y-6 pt-4">
+          <div className="max-w-2xl space-y-1">
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+              Standard 4-Stage Batch Release Protocol
             </h2>
-            <p className="text-sm text-gray-500">
-              Scroll down or hover across the pipeline stages below to inspect
-              our managed contract manufacturing and quality assurance protocol.
+            <p className="text-sm text-slate-600">
+              How we manage third-party formulation, packaging design, and
+              laboratory quality control from contract to dispatch.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
-            {/* LEFT COLUMN: Sticky Reactive Visualizer Console */}
-            <div className="lg:col-span-5 lg:sticky lg:top-28 transition-all duration-500">
-              <div className="bg-slate-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl border border-slate-800 relative overflow-hidden flex flex-col justify-between min-h-[420px]">
-                {/* Background Dynamic Glow */}
-                <div
-                  className={`absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-20 bg-gradient-to-br ${activeStep.highlightColor} transition-all duration-700 pointer-events-none`}
-                ></div>
-
-                {/* Console Header */}
-                <div className="space-y-4 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-teal-400 bg-teal-950/80 border border-teal-500/30 px-3 py-1 rounded-lg">
-                      {activeStep.badge}
-                    </span>
-                    <span className="text-2xl font-black font-mono text-slate-700">
-                      {activeStep.step} / 04
-                    </span>
-                  </div>
-
-                  {/* Reactive Icon Display */}
-                  <div className="py-6 flex items-center justify-center">
-                    <div
-                      className={`w-28 h-28 rounded-3xl bg-gradient-to-br ${activeStep.highlightColor} p-0.5 shadow-lg shadow-black/50 transition-all duration-500 transform scale-105`}
-                    >
-                      <div className="w-full h-full bg-slate-900 rounded-[22px] flex items-center justify-center">
-                        <ActiveIcon
-                          size={48}
-                          className="text-white animate-bounce"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Console Footer / Live Telemetry Box */}
-                <div className="pt-6 border-t border-slate-800/80 relative z-10 space-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
-                    {activeStep.metricLabel}
-                  </span>
-                  <div className="text-xl md:text-2xl font-black text-white font-mono tracking-tight">
-                    {activeStep.metricValue}
-                  </div>
-                  <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden mt-3">
-                    <div
-                      className={`h-full bg-gradient-to-r ${activeStep.highlightColor} transition-all duration-500`}
-                      style={{ width: `${((activeStepIndex + 1) / 4) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3 relative hover:border-slate-300 transition">
+              <span className="text-2xl font-black text-slate-200 absolute top-4 right-4">
+                01
+              </span>
+              <h3 className="text-base font-bold text-slate-900 pr-8">
+                Formulation & Dossier
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Selection from 300+ approved IP/BP/USP salts. Our technical team
+                verifies formulation stability, active pharmaceutical ingredient
+                (API) compatibility, and statutory drug approval dossiers[cite:
+                4].
+              </p>
             </div>
 
-            {/* RIGHT COLUMN: Scrolling Interactive Step Cards */}
-            <div className="lg:col-span-7 space-y-6">
-              {PROCESS_STEPS.map((item, idx) => {
-                const isCurrent = activeStepIndex === idx;
-                const ItemIcon = item.icon;
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3 relative hover:border-slate-300 transition">
+              <span className="text-2xl font-black text-slate-200 absolute top-4 right-4">
+                02
+              </span>
+              <h3 className="text-base font-bold text-slate-900 pr-8">
+                Foil & Cylinder Artwork
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Our in-house branding desk formats tamper-evident Alu-Alu foil
+                prints, carton layouts, and PET bottle labels, ensuring 100%
+                compliance with statutory drug labeling laws.
+              </p>
+            </div>
 
-                return (
-                  <div
-                    key={item.step}
-                    onMouseEnter={() => setActiveStepIndex(idx)}
-                    onClick={() => setActiveStepIndex(idx)}
-                    className={`p-8 rounded-3xl border transition-all duration-300 cursor-pointer relative overflow-hidden ${
-                      isCurrent
-                        ? "bg-white border-slate-900 shadow-xl ring-4 ring-slate-900/5 translate-x-1 md:translate-x-2"
-                        : "bg-white/60 hover:bg-white border-slate-200 shadow-sm hover:border-slate-300 opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    {/* Active Left Indicator Bar */}
-                    {isCurrent && (
-                      <div className="absolute top-0 left-0 bottom-0 w-2 bg-slate-900"></div>
-                    )}
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3 relative hover:border-slate-300 transition">
+              <span className="text-2xl font-black text-slate-200 absolute top-4 right-4">
+                03
+              </span>
+              <h3 className="text-base font-bold text-slate-900 pr-8">
+                Cleanroom Batch Run
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Production executes in Class-100,000 GMP zones. High-speed
+                rotary compression and automated liquid filling lines operate
+                under rigorous environmental temperature and humidity
+                monitoring.
+              </p>
+            </div>
 
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm font-mono ${
-                            isCurrent
-                              ? "bg-slate-900 text-white"
-                              : "bg-slate-100 text-slate-500"
-                          }`}
-                        >
-                          {item.step}
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                            {item.title}
-                          </h3>
-                          <span className="text-xs font-bold text-teal-600 block mt-0.5">
-                            {item.subtitle}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div
-                        className={`p-2 rounded-xl ${isCurrent ? "bg-blue-50 text-pharma-blue" : "bg-slate-50 text-slate-400"}`}
-                      >
-                        <ItemIcon size={20} />
-                      </div>
-                    </div>
-
-                    <p className="text-sm text-gray-600 leading-relaxed pl-13">
-                      {item.desc}
-                    </p>
-
-                    {/* Interactive Trigger Footer */}
-                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400 pl-13">
-                      <span>
-                        Protocol Standard:{" "}
-                        <strong className="text-slate-700">
-                          WHO-GMP / ISO 9001
-                        </strong>
-                      </span>
-                      <span
-                        className={`flex items-center gap-1 transition-colors ${isCurrent ? "text-pharma-blue" : "text-transparent"}`}
-                      >
-                        <span>Active Telemetry</span>
-                        <ArrowRight size={14} />
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs space-y-3 relative hover:border-slate-300 transition">
+              <span className="text-2xl font-black text-slate-200 absolute top-4 right-4">
+                04
+              </span>
+              <h3 className="text-base font-bold text-slate-900 pr-8">
+                NABL Testing & Release
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                No batch is released without passing independent NABL-accredited
+                HPLC assay and dissolution testing. Finished goods dispatch with
+                full Certificate of Analysis (COA) documentation.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom CTA Banner */}
-        <div className="bg-gradient-to-br from-slate-900 to-pharma-blue rounded-3xl p-8 md:p-12 text-white text-center shadow-xl space-y-6 relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-400 bg-white/10 px-3.5 py-1.5 rounded-full inline-block">
-              Scale With Our Network
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-              Ready to Expand Your Pharmaceutical Portfolio?
+        {/* Section 3: Commercial Terms & MOQ Matrix */}
+        <div className="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 shadow-2xs space-y-6">
+          <div className="border-b border-slate-200 pb-4">
+            <h2 className="text-lg font-bold text-slate-900">
+              Standard Commercial Terms for Third-Party & Wholesale Orders[cite:
+              4]
             </h2>
-            <p className="text-sm md:text-base text-slate-300 leading-relaxed">
-              Contact our B2B sales desk today to discuss formulation
-              availability, request analytical test certificates, or initiate
-              custom packaging design.
+            <p className="text-xs text-slate-500 mt-0.5">
+              Transparent operational parameters for hospital procurement boards
+              and regional distributor contracts.
             </p>
-            <div className="pt-2">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-xl font-extrabold text-sm hover:bg-teal-400 hover:text-white transition shadow-lg shadow-black/20"
-              >
-                <span>Initiate Third-Party Inquiry</span>
-                <ArrowRight size={16} />
-              </a>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-slate-900 font-bold">
+                <Package size={18} className="text-teal-600" />
+                <span>Minimum Order Quantity (MOQ)</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
+                <strong>Tablets & Capsules:</strong> 50,000 to 1,00,000 Units
+                per batch.
+                <br />
+                <strong>Liquid Syrups & Suspensions:</strong> 3,000 to 5,000
+                Bottles.
+                <br />
+                <strong>Ointments & Gels:</strong> 3,000 Tubes.
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-slate-900 font-bold">
+                <Clock size={18} className="text-blue-600" />
+                <span>Production Lead Times</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
+                <strong>New Formulation / Artwork:</strong> 25 to 30 Days
+                (including cylinder engraving and approval).
+                <br />
+                <strong>Repeat Commercial Batches:</strong> 15 to 20 Days from
+                confirmed purchase order.
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-slate-900 font-bold">
+                <FileCheck size={18} className="text-purple-600" />
+                <span>Statutory Compliance</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed pl-6 font-medium">
+                All consignments billed from our excise-advantaged Baddi depots.
+                Comprehensive drug test reports (COA) and GST tax invoices
+                accompany every physical shipment.
+              </p>
             </div>
           </div>
+        </div>
+
+        {/* Bottom CTA (Updated to solid slate-900 to match the site theme) */}
+        <div className="bg-slate-900 rounded-xl p-8 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6 border border-slate-800 shadow-md">
+          <div className="space-y-1 max-w-xl">
+            <h3 className="text-xl font-bold">
+              Initiate a Production Query or Check Stock
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Contact our sales desk to verify existing finished formulation
+              stock or request wholesale price lists for your medical store or
+              hospital dispensary.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="bg-white hover:bg-slate-100 text-slate-900 font-bold px-6 py-3.5 rounded-lg text-sm transition shrink-0 flex items-center gap-2 shadow-sm cursor-pointer"
+          >
+            <span>Submit B2B Inquiry</span>
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </div>

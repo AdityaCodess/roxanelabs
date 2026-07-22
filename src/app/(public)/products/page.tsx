@@ -8,6 +8,7 @@ import {
   Sparkles,
   CheckCircle2,
   Search,
+  ShieldCheck,
 } from "lucide-react";
 
 const SAMPLE_PRODUCTS = [
@@ -75,15 +76,21 @@ export default function ProductsPage() {
 
   return (
     <div className="bg-slate-50 min-h-screen pb-24 font-sans selection:bg-blue-500 selection:text-white">
-      {/* Page Header Banner */}
-      <div className="bg-pharma-blue text-white pt-20 pb-16 text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-          Formulation Catalog
-        </h1>
-        <p className="mt-4 text-blue-100 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-          Explore our WHO-GMP certified pharmaceutical portfolio available for
-          third-party manufacturing and bulk distribution.
-        </p>
+      {/* Clean Standardized Header Banner */}
+      <div className="bg-slate-900 text-white pt-20 pb-20 text-center px-4 border-b border-slate-800">
+        <div className="max-w-4xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 px-3.5 py-1.5 rounded-md text-xs font-semibold text-slate-300 tracking-wide shadow-xs">
+            <ShieldCheck size={14} className="text-teal-400" />
+            <span>WHO-GMP Certified Commercial Portfolio</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+            Formulation Catalog
+          </h1>
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+            Explore our WHO-GMP certified pharmaceutical portfolio available for
+            third-party manufacturing and bulk distribution[cite: 1].
+          </p>
+        </div>
       </div>
 
       {/* Interactive Catalog Section */}
@@ -100,7 +107,7 @@ export default function ProductsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search formulation or salt..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-pharma-blue outline-none text-sm font-medium"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-slate-900 outline-hidden text-sm font-medium transition"
             />
           </div>
 
@@ -109,7 +116,7 @@ export default function ProductsPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                   activeTab === tab
                     ? "bg-slate-900 text-white shadow-md"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -130,7 +137,7 @@ export default function ProductsPage() {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-pharma-blue bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
                     {prod.category}
                   </span>
                   <span className="text-[11px] font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200 flex items-center gap-1">
@@ -153,7 +160,9 @@ export default function ProductsPage() {
                     {prod.packing}
                   </span>
                 </span>
-                <span className="text-pharma-blue">GMP Verified</span>
+                <span className="text-slate-900 font-extrabold">
+                  GMP Verified
+                </span>
               </div>
             </div>
           ))}
