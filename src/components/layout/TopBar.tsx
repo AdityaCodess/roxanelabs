@@ -11,17 +11,17 @@ export default function TopBar() {
           </div>
           <div className="flex items-center gap-2 hover:text-white transition cursor-pointer">
             <Phone size={14} className="text-pharma-teal" />
-            <span>+91 1795-XXXXXX</span>
+            <span>+91-9050320999</span>
           </div>
           <div className="flex items-center gap-2 hover:text-white transition cursor-pointer">
             <Globe size={14} className="text-pharma-teal" />
-            <span>Export Inquiry</span>
+            <span>Inquiry</span>
           </div>
         </div>
 
         <div className="flex space-x-4 items-center">
           <span>
-            NSE: ROXANE <span className="text-green-400">▲ 1.2%</span>
+            NSE: ROXANE <span className="text-green-400">Not Listed Yet</span>
           </span>
           <div className="w-px h-3 bg-slate-700"></div>
           <a href="#" className="hover:text-white">
