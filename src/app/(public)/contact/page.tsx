@@ -60,7 +60,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
             Interested in Third-Party Manufacturing or Distribution? Reach out
-            to our corporate team below[cite: 2].
+            to our corporate team below.
           </p>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                       <br />
                       Jharmajri, Baddi,
                       <br />
-                      Himachal Pradesh - 173205[cite: 2]
+                      Himachal Pradesh - 173205
                     </p>
                   </div>
                 </div>
@@ -100,11 +100,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-white">Phone Support</h3>
                     <p className="text-slate-400 mt-1">
-                      +91 98XXX XXXXX (Sales)[cite: 2]
+                      +91 98XXX XXXXX (Sales)
                     </p>
-                    <p className="text-slate-400">
-                      +91 17XXX XXXXX (Plant)[cite: 2]
-                    </p>
+                    <p className="text-slate-400">+91 17XXX XXXXX (Plant)</p>
                   </div>
                 </div>
 
@@ -116,10 +114,8 @@ export default function ContactPage() {
                     <h3 className="font-bold text-white">
                       Email Communications
                     </h3>
-                    <p className="text-slate-400 mt-1">
-                      info@roxane.com[cite: 2]
-                    </p>
-                    <p className="text-slate-400">export@roxane.com[cite: 2]</p>
+                    <p className="text-slate-400 mt-1">info@roxane.com</p>
+                    <p className="text-slate-400">export@roxane.com</p>
                   </div>
                 </div>
               </div>
@@ -185,7 +181,7 @@ export default function ContactPage() {
                   </h3>
                   <p className="text-sm text-gray-500 mt-1">
                     To prevent spam and SQL/NoSQL injections, please enter the
-                    6-digit verification code sent to your email inbox[cite: 2].
+                    6-digit verification code sent to your email inbox.
                   </p>
                 </div>
 
@@ -198,7 +194,7 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Enter 6-Digit OTP Code[cite: 2]
+                      Enter 6-Digit OTP Code
                     </label>
                     <input
                       name="otpCode"
@@ -236,7 +232,7 @@ export default function ContactPage() {
                         <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                       ) : (
                         <>
-                          <span>Verify & Log Inquiry[cite: 2]</span>
+                          <span>Verify & Log Inquiry</span>
                           <CheckCircle2 size={16} />
                         </>
                       )}
@@ -252,15 +248,15 @@ export default function ContactPage() {
                 <div className="mb-8 flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-                      Send us a Message[cite: 2]
+                      Send us a Message
                     </h2>
                     <p className="text-sm text-gray-500 mt-1">
-                      We usually reply within 24 business hours[cite: 2].
+                      We usually reply within 24 business hours.
                     </p>
                   </div>
                   <span className="text-[11px] font-bold tracking-wider text-green-700 bg-green-50 px-3 py-1 rounded-full border border-green-200 flex items-center gap-1">
                     <ShieldCheck size={14} className="text-green-600" />
-                    Zod Protected[cite: 2]
+                    Zod Protected
                   </span>
                 </div>
 
@@ -268,7 +264,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        First Name[cite: 2]
+                        First Name
                       </label>
                       <input
                         name="firstName"
@@ -280,7 +276,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Last Name[cite: 2]
+                        Last Name
                       </label>
                       <input
                         name="lastName"
@@ -295,7 +291,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Email Address[cite: 2]
+                        Email Address
                       </label>
                       <input
                         name="email"
@@ -307,7 +303,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                        Contact Number[cite: 2]
+                        Contact Number
                       </label>
                       <input
                         name="phone"
@@ -321,40 +317,40 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Subject[cite: 2]
+                      Subject
                     </label>
                     <select
                       name="subject"
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-slate-900 focus:ring-4 focus:ring-slate-100 outline-hidden transition text-sm font-medium bg-white"
                     >
                       <option value="Inquiry for Third Party Manufacturing">
-                        Inquiry for Third Party Manufacturing[cite: 2]
+                        Inquiry for Third Party Manufacturing
                       </option>
                       <option value="Distributorship Application">
-                        Distributorship Application[cite: 2]
+                        Distributorship Application
                       </option>
                       <option value="Export & Global Distribution">
-                        Export & Global Distribution[cite: 2]
+                        Export & Global Distribution
                       </option>
                       <option value="QC & Regulatory Dossier Request">
-                        QC & Regulatory Dossier Request[cite: 2]
+                        QC & Regulatory Dossier Request
                       </option>
                       <option value="Other Business Query">
-                        Other Business Query[cite: 2]
+                        Other Business Query
                       </option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Message[cite: 2]
+                      Message
                     </label>
                     <textarea
                       name="message"
                       rows={4}
                       required
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-slate-900 focus:ring-4 focus:ring-slate-100 outline-hidden transition text-sm font-medium resize-none"
-                      placeholder="Tell us about your requirements, formulation types, or estimated quantities...[cite: 2]"
+                      placeholder="Tell us about your requirements, formulation types, or estimated quantities..."
                     ></textarea>
                   </div>
 
@@ -374,7 +370,7 @@ export default function ContactPage() {
                       <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                     ) : (
                       <>
-                        <span>Verify & Send Message[cite: 2]</span>
+                        <span>Verify & Send Message</span>
                         <Send size={16} />
                       </>
                     )}

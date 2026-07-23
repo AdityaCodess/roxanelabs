@@ -9,10 +9,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  // Updated to use slate-900 instead of the missing pharma-blue
   const isActive = (path: string) =>
     pathname === path
-      ? "text-pharma-blue font-bold"
-      : "text-gray-600 hover:text-pharma-blue";
+      ? "text-slate-900 font-bold"
+      : "text-slate-500 hover:text-slate-900";
 
   return (
     <nav className="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
@@ -23,8 +24,8 @@ export default function Navbar() {
             href="/"
             className="flex-shrink-0 flex items-center cursor-pointer group"
           >
-            <span className="text-2xl font-bold text-pharma-blue tracking-tight group-hover:opacity-80 transition">
-              ROXANE <span className="text-pharma-teal">LABS</span>
+            <span className="text-2xl font-bold text-slate-900 tracking-tight group-hover:opacity-80 transition">
+              ROXANE <span className="text-teal-600">LABS</span>
             </span>
           </Link>
 
@@ -64,12 +65,14 @@ export default function Navbar() {
 
           {/* ACTIONS */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="p-2 text-gray-500 hover:text-pharma-blue transition">
+            <button className="p-2 text-slate-500 hover:text-slate-900 transition cursor-pointer">
               <Search size={20} />
             </button>
+
+            {/* FIXED LOGIN BUTTON */}
             <Link
               href="/login"
-              className="flex items-center gap-2 px-5 py-2 bg-pharma-blue text-white rounded-full font-medium hover:bg-blue-900 transition shadow-md hover:shadow-lg"
+              className="flex items-center gap-2 px-5 py-2 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition shadow-md hover:shadow-lg cursor-pointer"
             >
               <UserCircle size={18} />
               Partner Login
@@ -79,7 +82,7 @@ export default function Navbar() {
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-pharma-blue transition"
+            className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition cursor-pointer"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -93,43 +96,44 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-pharma-blue hover:bg-blue-50"
+              className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               Home
             </Link>
             <Link
               href="/about"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-pharma-blue hover:bg-blue-50"
+              className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               Who We Are
             </Link>
             <Link
               href="/products"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-pharma-blue hover:bg-blue-50"
+              className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               Products
             </Link>
             <Link
               href="/manufacturing"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-pharma-blue hover:bg-blue-50"
+              className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               Manufacturing
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-pharma-blue hover:bg-blue-50"
+              className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
             >
               Contact
             </Link>
+
             <div className="pt-4 border-t border-slate-100">
               <Link
                 href="/login"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center w-full px-4 py-3 bg-pharma-blue text-white rounded-lg font-bold"
+                className="flex items-center justify-center w-full px-4 py-3 bg-slate-900 hover:bg-slate-800 transition text-white rounded-lg font-bold shadow-sm"
               >
                 Distributor Login
               </Link>
